@@ -7,33 +7,28 @@ redirect_from:
   - /about.html
 ---
 
-深圳大学计算机科学与技术(创新班)大三本科生
+Third-year undergraduate student in Computer Science and Technology (Innovation Class) at Shenzhen University.
 
-研究方向
-======
-**多模态大模型方向**  
-探索多模态数据的联合表征学习，构建具有理解多模态能力的AI模型框架，推动跨模态内容生成技术在现实场景中的应用落地。
+Research Interests
+==================
+**Multimodal Large Models**
+Explore the joint representation learning of multimodal data, build AI model frameworks with multimodal understanding capabilities, and promote the application of cross-modal content generation technology in real-world scenarios.
 
-教育背景
-======
-**深圳大学** | 计算机科学与技术(创新班)  
-2022.09 - 2026.07（预计）  
-- 核心课程：数据结构、算法设计与分析、数据科学导论
+Education
+=========
+**Shenzhen University** | Computer Science and Technology (Innovation Class)
+2022.09 - 2026.07 (Expected)
+- Core Courses: Data Structures, Algorithm Design and Analysis, Introduction to Data Science
 
-荣誉奖项
-======
-- 2023全国大学生机甲大师RoboMaster超级对抗赛 **一等奖**
-- 2023年深圳大学学习之星三等奖 (专业Top10%)
-- 2024全国大学生机甲大师RoboMaster超级对抗赛 **一等奖**
-- 2024年深圳大学学习之星三等奖 (专业Top10%)
+Honors and Awards
+==================
+- 2023 National Undergraduate RoboMaster Robotics Competition **First Prize**
+- 2023 Shenzhen University Study Star Third Prize (Top 10% in major)
+- 2024 National Undergraduate RoboMaster Robotics Competition **First Prize**
+- 2024 Shenzhen University Study Star Third Prize (Top 10% in major)
 
-实习经历
-======
-**微软亚洲研究院（MSRA）** | 大模型算法研究实习生  
-- 参与多模态大模型研发，优化跨模态对齐算法
+Internship Experience
+=====================
+**Microsoft Research Asia (MSRA)**
 
-**腾讯** | 测试开发实习生
-- 采用 TypeScript + Node.js + Puppeteer 技术栈，遵循 BDD 测试规范，构建端到端自动化测试框架，实现性能、稳定性、核心业务功能等场景的自动化测试，测试用例覆盖率达 75%。
-
-
---- 
+**Tencent**
