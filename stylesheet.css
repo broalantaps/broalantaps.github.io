@@ -163,3 +163,14 @@ button.collapsible:hover {
   50% { transform: translateX(8px); }
   100% { transform: translateX(0); }
 }
+
+/* Rotation animation for the avatar */
+.rotate-avatar {
+  display: inline-block;
+  animation: avatar-spin 5s linear infinite;
+}
+
+@keyframes avatar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
