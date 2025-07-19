@@ -3,11 +3,27 @@
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102766803-2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'UA-102766803-2');
+        gtag('config', 'UA-102766803-2');
+        // 追踪当前旋转角度
+        let avatar = document.querySelector('.rotate-avatar');
+        let wrapper = document.querySelector('.avatar-wrapper');
+        let start = null;
+        let rotation = 0;
+        let animationFrame;
+
+        function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        rotation = (progress / 5000) * 360 % 360;
+        avatar.style.setProperty('--current-rotation', rotation + 'deg');
+        animationFrame = requestAnimationFrame(step);
+        }
+
+        animationFrame = requestAnimationFrame(step);
     </script>
 
 
@@ -41,7 +57,12 @@
                     
                     <tr style="padding:0px">
                         <td style="padding:2.5%;width:20%;max-width:20%">
-                            <a href="images/iu_green.jpg"><img style="width:100%;max-width:100%" alt="profile photo" src="images/iu_green.jpg" class="img-circle"></a>
+                            <!-- <a href="images/iu_green.jpg"><img style="width:100%;max-width:100%" alt="profile photo" src="images/iu_green.jpg" class="img-circle rotate-avatar"></a> -->
+                             <a href="images/iu_green.jpg">
+                                <div class="avatar-wrapper">
+                                    <img style="width:100%;max-width:100%" alt="profile photo" src="images/iu_green.jpg" class="img-circle rotate-avatar">
+                                </div>
+                            </a>
                         </td>
                         <td style="padding:2.5%;width:60%;vertical-align:middle">
                             <p style="text-align:center">

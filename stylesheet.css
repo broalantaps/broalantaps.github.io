@@ -155,11 +155,38 @@ button.collapsible:hover {
 /* Animated airplane next to Experience */
 .fly-plane {
   display: inline-block;
-  animation: plane-fly 2s ease-in-out infinite;
+  animation: plane-fly 5s ease-in-out infinite;
 }
 
 @keyframes plane-fly {
   0% { transform: translateX(0); }
   50% { transform: translateX(8px); }
   100% { transform: translateX(0); }
+}
+/* 旋转动画 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 包裹层用于独立控制缩放 */
+.avatar-wrapper {
+  display: inline-block;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* 头像持续旋转 */
+.rotate-avatar {
+  animation: spin 20s linear infinite;
+  display: block;
+  transform-origin: center center;
+}
+
+/* 悬停时：放大（wrapper）并暂停旋转（img） */
+.avatar-wrapper:hover {
+  transform: scale(1.5);
+}
+
+.avatar-wrapper:hover .rotate-avatar {
+  animation-play-state: paused;
 }
