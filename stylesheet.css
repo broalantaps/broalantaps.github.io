@@ -130,3 +130,36 @@ name {
 span.highlight {
   background-color: #ffffd0;
 }
+
+/* Background color for the main page */
+.bg_colour {
+  background-color: #fdfdfd;
+}
+
+/* Style for collapsible section headers */
+button.collapsible {
+  font-size: 24px;
+  font-weight: 700;
+  color: #d38975;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  margin: 15px 0;
+}
+
+button.collapsible:hover {
+  color: #f09228;
+}
+
+/* Animated airplane next to Experience */
+.fly-plane {
+  display: inline-block;
+  animation: plane-fly 2s ease-in-out infinite;
+}
+
+@keyframes plane-fly {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
