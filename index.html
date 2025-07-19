@@ -47,7 +47,24 @@
     <link rel="icon" type="image/png" href="images/iu_green.jpg">
 </head>
 <body class="bg_colour">
-    <button id="language-toggle" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">中文</button>
+    <button id="language-toggle" style="
+        position: fixed; 
+        top: 20px; 
+        right: 20px; 
+        z-index: 1000;
+        background: linear-gradient(135deg, #9ee908 0%, #e8ccd6 100%);
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        font-family: 'Quicksand', sans-serif;
+    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.3)'" 
+       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)'">中文</button>
     <table border=0 class="bg_colour" style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr style="padding:0px">
             <td style="padding:0px">
@@ -87,7 +104,7 @@
                             </p>
                             <p style="text-align:center"> <strong data-i18n="emailLabel">Email:</strong> <a href="mailto:broalantaps123@gmail.com">broalantaps123@gmail.com</a> </p>
                             <p></p>
-                            <p style="text-align:center"><strong data-i18n="quote">"We are not determined by our experiences, <br>but the meaning we give them is self-determining."</strong>&nbsp;&nbsp;--<a href="https://en.wikipedia.org/wiki/Alfred_Adler" target="_blank">Alfred Adler</a></p>
+                            <p style="text-align:center"><strong data-i18n="quote">"We are not determined by our experiences, <br>but the meaning we give them is self-determining."</strong>&nbsp;&nbsp;--<a href="https://en.wikipedia.org/wiki/Alfred_Adler" target="_blank" data-i18n="adlerName">Alfred Adler</a></p>
                             <p></p>
                         </td>
                         <td style="padding:2.5%;width:10%;max-width:10%">
@@ -306,6 +323,7 @@
                 linkPublications: 'Publications',
                 emailLabel: 'Email:',
                 quote: '"We are not determined by our experiences, <br>but the meaning we give them is self-determining."',
+                adlerName: 'Alfred Adler',
                 about: 'I am a third-year CS undergraduate student at Shenzhen University. I\'m courageous in pursuing initiatives I believe create real value. I have no current plan to pursue a PhD and am seeking opportunities with early-stage AI + Education startups. Feel free to drop me an <a href="mailto:broalantaps123@gmail.com" target="_blank">e-mail</a> if you would like to connect!',
                 btnExperience: 'Experience',
                 msraTitle: 'Microsoft Research Asia',
@@ -339,6 +357,7 @@
                 linkPublications: '论文',
                 emailLabel: '邮箱：',
                 quote: '“决定我们自身的不是过去的经历，<br>而是我们自己赋予经历的意义。”',
+                adlerName: '阿尔弗雷德·阿德勒',
                 about: '我是一名深圳大学计算机专业的大三学生，我对于自我认可的有价值事充满热情与勇敢。目前没有攻读博士的计划，正在寻找早期AI+教育创业公司的机会。如有兴趣欢迎给我发 <a href="mailto:broalantaps123@gmail.com" target="_blank">邮件</a> 联系！',
                 btnExperience: '经历',
                 msraTitle: '微软亚洲研究院',
