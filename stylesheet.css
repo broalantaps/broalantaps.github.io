@@ -190,3 +190,16 @@ button.collapsible:hover {
 .avatar-wrapper:hover .rotate-avatar {
   animation-play-state: paused;
 }
+
+/* Research Interests section - 使用系统默认字体 */
+#content-interests p,
+#content-interests strong,
+#content-interests {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* About section paragraph - 使用系统默认字体 */
+.about-section {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 16px !important;
+}
