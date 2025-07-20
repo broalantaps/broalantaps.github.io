@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Blog Post - Yuhong Dai</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="../images/iu_green.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 20px;
+        }
+        .post-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .post-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .post-meta {
+            font-family: 'Quicksand', sans-serif;
+            color: #666;
+            font-size: 1rem;
+        }
+        .post-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .post-category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .post-content {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            font-family: 'Nunito', sans-serif;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .post-content h1 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #9ee908;
+            padding-bottom: 10px;
+        }
+        .post-content h2 {
+            font-size: 1.5rem;
+            color: #555;
+        }
+        .post-content p {
+            margin-bottom: 20px;
+        }
+        .post-content blockquote {
+            border-left: 4px solid #9ee908;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #666;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #9ee908;
+            text-decoration: none;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: #7bc906;
+            text-decoration: none;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+    </style>
+</head>
+<body class="bg_colour">
+    <div class="post-container">
+        <a href="index.html" class="back-link">← 返回博客</a>
+        
+        <div id="loading" class="loading">
+            <p>加载中...</p>
+        </div>
+
+        <article id="post-article" style="display: none;">
+            <div class="post-header">
+                <h1 id="post-title" class="post-title"></h1>
+                <div id="post-meta" class="post-meta"></div>
+                <div id="post-category" class="post-category"></div>
+            </div>
+            <div id="post-content" class="post-content"></div>
+        </article>
+    </div>
+
+    <script>
+        // Mock markdown content - in a real implementation, you'd fetch from the actual .md files
+        const mockPosts = {
+            '2024-01-15-thoughts-on-ai-education.md': {
+                title: 'AI与教育的思考',
+                date: '2024-01-15',
+                category: '技术思考',
+                content: `# AI与教育的思考
+
+在这个AI快速发展的时代，我经常思考技术如何能够真正改变教育的本质。
+
+## 个性化学习的可能性
+
+每个学生都有独特的学习方式和节奏。AI技术让我们有机会为每个学习者创造量身定制的学习体验。
+
+## 教师角色的转变
+
+技术不是要替代教师，而是要让教师从重复性工作中解放出来，专注于更有创造性和启发性的教学活动。
+
+## 思考与展望
+
+教育的核心始终是人与人之间的连接和启发。技术只是工具，真正的教育魅力在于激发学生的好奇心和创造力。
+
+---
+
+*写于深圳大学图书馆*`
+            },
+            '2024-02-20-life-reflections.md': {
+                title: '生活随想',
+                date: '2024-02-20',
+                category: '生活感悟',
+                content: `# 生活随想
+
+最近在思考什么是真正有意义的生活。
+
+## 关于选择
+
+每一个选择都在塑造着我们成为什么样的人。重要的不是选择本身，而是我们如何对待自己的选择。
+
+## 关于成长
+
+成长不是年龄的增长，而是思维的拓展和心智的成熟。每一次挫折都是成长的机会。
+
+## 关于未来
+
+未来充满不确定性，但这正是生活的魅力所在。保持好奇心，拥抱变化。
+
+---
+
+*夜深人静时的思考*`
+            }
+        };
+
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('zh-CN', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function loadPost() {
+            const filename = getUrlParameter('file');
+            const loading = document.getElementById('loading');
+            const article = document.getElementById('post-article');
+
+            if (!filename || !mockPosts[filename]) {
+                loading.innerHTML = '<p>文章未找到</p>';
+                return;
+            }
+
+            const post = mockPosts[filename];
+            
+            // Update post metadata
+            document.getElementById('post-category').textContent = post.category;
+            document.getElementById('post-title').textContent = post.title;
+            document.getElementById('post-meta').textContent = formatDate(post.date);
+            
+            // Convert markdown to HTML
+            document.getElementById('post-content').innerHTML = marked.parse(post.content);
+            
+            // Update page title
+            document.title = `${post.title} - Yuhong Dai`;
+            
+            // Show article and hide loading
+            loading.style.display = 'none';
+            article.style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPost);
+    </script>
+</body>
+</html>

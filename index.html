@@ -47,6 +47,12 @@
     <link rel="icon" type="image/png" href="images/iu_green.jpg">
 </head>
 <body class="bg_colour">
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <span id="toggle-icon">☰</span>
+    </button>
+    
+    <!-- Language Toggle Button -->
     <button id="language-toggle" style="
         position: fixed; 
         top: 20px; 
@@ -65,6 +71,52 @@
         font-family: 'Quicksand', sans-serif;
     " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.3)'" 
        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)'">中文</button>
+    
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">导航</h2>
+            <p class="sidebar-subtitle">Navigation</p>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" data-section="home">
+                    <span class="nav-icon">🏠</span>
+                    <span data-i18n="navHome">首页</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#content-internships" class="nav-link" data-section="experience">
+                    <span class="nav-icon">✈️</span>
+                    <span data-i18n="navExperience">经历</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#content-interests" class="nav-link" data-section="research">
+                    <span class="nav-icon">🔬</span>
+                    <span data-i18n="navResearch">研究兴趣</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#content-publications" class="nav-link" data-section="publications">
+                    <span class="nav-icon">📚</span>
+                    <span data-i18n="navPublications">论文</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="blog/index.html" class="nav-link blog-indicator" data-section="blog">
+                    <span class="nav-icon">✍️</span>
+                    <span data-i18n="navBlog">个人随笔</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
     <table border=0 class="bg_colour" style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr style="padding:0px">
             <td style="padding:0px">
@@ -321,35 +373,40 @@
                 googleScholar: 'Google Scholar',
                 linkResearch: 'Research Interests',
                 linkPublications: 'Publications',
-                emailLabel: 'Email:',
-                quote: '"We are not determined by our experiences, <br>but the meaning we give them is self-determining."',
-                adlerName: 'Alfred Adler',
-                about: 'I am a third-year CS undergraduate student at Shenzhen University. I\'m courageous in pursuing initiatives I believe create real value. I have no current plan to pursue a PhD and am seeking opportunities with early-stage AI + Education startups. Feel free to drop me an <a href="mailto:broalantaps123@gmail.com" target="_blank">e-mail</a> if you would like to connect!',
+                emailLabel: 'Email: ',
+                quote: '"It is not what happens to you, <br>but how you react to it that matters."',
+                adlerName: 'Epictetus',
+                about: 'I am a junior student majoring in Computer Science at Shenzhen University. I am passionate and brave about things I consider valuable for self-recognition. Currently, I have no plans to pursue a PhD and am looking for opportunities in early-stage AI+Education startups. If you are interested, please feel free to <a href="mailto:broalantaps123@gmail.com" target="_blank">email</a> me!',
                 btnExperience: 'Experience',
                 msraTitle: 'Microsoft Research Asia',
-                msraIntern: 'Internship in Social Computing Group',
-                msraAward: '🏆 Received "Star Of Tomorrow" Internship Award',
+                msraIntern: 'Research Intern in Social Computing Group',
+                msraAward: '🏆 Awarded "Star of Tomorrow" Internship Award',
                 msraLocation: 'Beijing, China',
-                msraDesc: 'This place is like Whampoa Military Academy for computer science majors——I still can\'t believe I actually snagged an internship here! My time at MSRA has been an absoulte blast: I leveled up my horizons, met a bunch of insanely smart and super-fun people, and even joined an epic board-game club. I\'m gonna remember this ride forever! ❤️',
-                hkuTitle: 'Hong Kong University Technology Camp',
-                hkuVisits: 'Visits Organized By the college',
+                msraDesc: 'This is the "Whampoa Military Academy" for computer science students. I still feel lucky and incredible to have had the opportunity to intern here. My journey at Microsoft Research Asia broadened my horizons, allowed me to meet many brilliant and interesting people, and brought me unique joy through the vibrant and creative board game club—all of which will remain unforgettable memories. ❤️',
+                hkuTitle: 'HKU Tech Camp',
+                hkuVisits: 'College-organized visit',
                 hkuLocation: 'Hong Kong, China',
-                hkuDesc: 'It was my first time in a city this diverse——I met tons of people whose cultures were totally different from mine. I spent a week at the Garden View Hong Kong Hotel in Mid-Levels, Central, and really soaked up the city\'s vibe. I\'m super grateful our college hooked us up with the trip and even threw in enough cash to let us explore and spend freely. 💗',
+                hkuDesc: 'This was my first time in such a diverse city. Here, I met many people with very different cultural backgrounds from ours. That week we stayed at the Garden View Hotel in Mid-Levels, Central, and truly experienced Hong Kong\'s unique and rich urban culture. I am very grateful for the opportunity provided by the college, along with sufficient funding that allowed us to freely explore this city. 💗',
                 tencentTitle: 'Tencent',
-                tencentRole: 'Software Engineer Intern',
+                tencentRole: 'Software Engineering Intern',
                 tencentLocation: 'Shenzhen, China',
-                tencentDesc: 'The work I\'m doing here feels utterly meaningless, leaving me completely disenchanted.',
+                tencentDesc: 'What I did here made me feel meaningless.',
                 roboTitle: 'RoboMaster',
-                roboRole: 'Member of Vision Group',
+                roboRole: 'Vision Team Member',
                 roboLoc1: 'Dongguan, China',
                 roboLoc2: 'Changsha, China',
                 roboLoc3: 'Shenzhen, China',
-                roboDesc: 'This robotic competition has cranked out a whole generation of young engineers. I spent two unforgettable, high-octane years here——crazy highs, tough lows, and finally a sense of letting go. Along the way I met the best friends of my college life. They are crazy talented people who never hesitated to give it their all.',
+                roboDesc: 'This robotics competition has nurtured and produced countless young engineers. The two years here were unforgettable, passionate, and ultimately settling and relieving years for me. I met my best companions during university here—they are talented and willing to invest and contribute.',
                 headingResearch: 'Research Interests',
-                interest1: 'I am dedicated to advancing the integration of large language models and AI agents in education.',
-                interest2: 'My previous research has focused on efficient inference for LLMs pre-training and on multimodal AI companions.',
+                interest1: 'I am committed to advancing the integration of large models and AI agents in education.',
+                interest2: 'My previous research focused on large model pretraining, efficient inference, and multimodal AI-Companion.',
                 headingPublications: 'Publications',
-                paper1Title: '<strong>Pretraining Context Compressor for Large Language Models with Embedding-Based Memory</strong>'
+                paper1Title: '<strong>Pretraining Context Compressor for Large Language Models with Embedding-Based Memory</strong>',
+                navHome: 'Home',
+                navResearch: 'Research Interest',
+                navExperience: 'Experience',
+                navPublications: 'Publications',
+                navBlog: 'Personal Essays'
             },
             zh: {
                 googleScholar: '谷歌学术',
@@ -407,8 +464,98 @@
             });
             updateLanguage(document.documentElement.lang || 'en');
         });
+        
+        // Sidebar functionality
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const mainContent = document.getElementById('main-content');
+        const toggleIcon = document.getElementById('toggle-icon');
+        
+        function toggleSidebar() {
+            const isOpen = sidebar.classList.contains('open');
+            
+            if (isOpen) {
+                sidebar.classList.remove('open');
+                sidebarOverlay.classList.remove('active');
+                mainContent.classList.remove('shifted');
+                sidebarToggle.classList.remove('active');
+                toggleIcon.textContent = '☰';
+            } else {
+                sidebar.classList.add('open');
+                sidebarOverlay.classList.add('active');
+                mainContent.classList.add('shifted');
+                sidebarToggle.classList.add('active');
+                toggleIcon.textContent = '✕';
+            }
+        }
+        
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+        
+        // Navigation link functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Don't prevent default for external links (like blog)
+                if (link.getAttribute('href').startsWith('blog/')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                link.classList.add('active');
+                
+                // Smooth scroll to section if it's an internal link
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+                
+                // Close sidebar on mobile after navigation
+                if (window.innerWidth <= 768) {
+                    toggleSidebar();
+                }
+            });
+        });
+        
+        // Update active nav link based on scroll position
+        function updateActiveNavLink() {
+            const sections = ['content-interests', 'content-internships', 'content-publications'];
+            const scrollPosition = window.scrollY + 100;
+            
+            let activeSection = 'home';
+            
+            sections.forEach(sectionId => {
+                const element = document.getElementById(sectionId);
+                if (element && element.offsetTop <= scrollPosition) {
+                    activeSection = sectionId.replace('content-', '');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === activeSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveNavLink);
     </script>
 
+    </div> <!-- Close main-content -->
 </body>
 
 </html>
