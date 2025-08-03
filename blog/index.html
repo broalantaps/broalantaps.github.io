@@ -113,23 +113,13 @@
     </div>
 
     <script>
-        // Blog posts data - in a real implementation, this would come from a backend or markdown files
-        const blogPosts = [
-            {
-                title: "2025RoboMaster有感",
-                date: "2025-08-03",
-                category: "技术思考",
-                excerpt: "关于2025RoboMaster的思考和感悟。",
-                filename: "2025-08-03-2025RM-Thoughts.md"
-            },
-            {
-                title: "AI与教育的思考",
-                date: "2024-01-15",
-                category: "技术思考",
-                excerpt: "关于人工智能在教育领域应用的一些个人思考和观察。",
-                filename: "2025-08-3-thoughts-on-ai-education.md"
-            }
+        // List of markdown files to load
+        const markdownFiles = [
+            "2024-01-15-thoughts-on-ai-education.md",
+            "2025-08-03-2025RM-Thoughts.md",
         ];
+
+        let blogPosts = [];
 
         function formatDate(dateString) {
             const date = new Date(dateString);
@@ -140,8 +130,84 @@
             });
         }
 
+        function parseFrontMatter(markdown) {
+            let title = '无标题';
+            let category = '未分类';
+            let date = new Date().toISOString().split('T')[0];
+            let excerpt = '暂无摘要';
+
+            // 检查 YAML front matter
+            if (markdown.startsWith('---')) {
+                const endOfFrontMatter = markdown.indexOf('---', 3);
+                if (endOfFrontMatter !== -1) {
+                    const frontMatter = markdown.substring(3, endOfFrontMatter).trim();
+
+                    // 解析 YAML front matter
+                    const lines = frontMatter.split('\n');
+                    lines.forEach(line => {
+                        const colonIndex = line.indexOf(':');
+                        if (colonIndex > 0) {
+                            const key = line.substring(0, colonIndex).trim();
+                            const value = line.substring(colonIndex + 1).trim().replace(/"/g, '');
+
+                            if (key === 'title') title = value;
+                            else if (key === 'category') category = value;
+                            else if (key === 'date') date = value;
+                            else if (key === 'excerpt') excerpt = value;
+                        }
+                    });
+                }
+            }
+
+            return { title, category, date, excerpt };
+        }
+
+        async function loadAllPosts() {
+            const container = document.getElementById('blog-posts');
+            container.innerHTML = '<p style="text-align: center; color: #666;">加载文章中...</p>';
+            
+            try {
+                const posts = await Promise.all(
+                    markdownFiles.map(async (filename) => {
+                        try {
+                            const response = await fetch(`posts/${filename}`);
+                            if (!response.ok) {
+                                console.warn(`无法加载文件: ${filename}`);
+                                return null;
+                            }
+                            const markdown = await response.text();
+                            const postData = parseFrontMatter(markdown);
+                            return {
+                                ...postData,
+                                filename
+                            };
+                        } catch (error) {
+                            console.warn(`加载文件 ${filename} 时出错:`, error);
+                            return null;
+                        }
+                    })
+                );
+
+                // 过滤掉null值并按日期排序
+                blogPosts = posts
+                    .filter(post => post !== null)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                renderBlogPosts();
+            } catch (error) {
+                console.error('加载文章列表时出错:', error);
+                container.innerHTML = '<p style="text-align: center; color: #e74c3c;">加载文章列表失败。请确保使用HTTP服务器访问网站。</p>';
+            }
+        }
+
         function renderBlogPosts() {
             const container = document.getElementById('blog-posts');
+            container.innerHTML = '';
+            
+            if (blogPosts.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666;">暂无文章</p>';
+                return;
+            }
             
             blogPosts.forEach(post => {
                 const postElement = document.createElement('article');
@@ -156,7 +222,7 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', renderBlogPosts);
+        document.addEventListener('DOMContentLoaded', loadAllPosts);
     </script>
 </body>
 </html>
