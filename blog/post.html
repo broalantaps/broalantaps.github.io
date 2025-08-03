@@ -120,6 +120,89 @@
     </div>
 
     <script>
+        // Article content for GitHub Pages compatibility
+                        const articles = {
+            "2024-01-15-thoughts-on-ai-education.md": {
+                title: "AI与教育的思考",
+                date: "2024-01-15",
+                category: "技术思考",
+                content: `# AI与教育的思考
+
+在这个AI快速发展的时代，我经常思考技术如何能够真正改变教育的本质。
+
+## 个性化学习的可能性
+
+每个学生都有独特的学习方式和节奏。AI技术让我们有机会为每个学习者创造量身定制的学习体验。
+
+## 教师角色的转变
+
+技术不是要替代教师，而是要让教师从重复性工作中解放出来，专注于更有创造性和启发性的教学活动。
+
+## 思考与展望
+
+教育的核心始终是人与人之间的连接和启发。技术只是工具，真正的教育魅力在于激发学生的好奇心和创造力。
+
+---
+
+*写于深圳大学图书馆*`
+            },
+            "2024-02-20-life-reflections.md": {
+                title: "生活随想",
+                date: "2024-02-20",
+                category: "生活感悟",
+                content: `# 生活随想
+
+最近在思考什么是真正有意义的生活。
+
+## 关于选择
+
+每一个选择都在塑造着我们成为什么样的人。重要的不是选择本身，而是我们如何对待自己的选择。
+
+## 关于成长
+
+成长不是年龄的增长，而是思维的拓展和心智的成熟。每一次挫折都是成长的机会。
+
+## 关于未来
+
+未来充满不确定性，但这正是生活的魅力所在。保持好奇心，拥抱变化。
+
+---
+
+*夜深人静时的思考*`
+            },
+            "2025-08-03-2025RM-Thoughts.md": {
+                title: "2025RoboMaster有感",
+                date: "2025-08-03",
+                category: "技术思考",
+                content: `# AI与教育的思考
+
+在这个AI快速发展的时代，我经常思考技术如何能够真正改变教育的本质。
+
+## 个性化学习的可能性
+
+每个学生都有独特的学习方式和节奏。AI技术让我们有机会为每个学习者创造量身定制的学习体验。
+
+## 教师角色的转变
+
+技术不是要替代教师，而是要让教师从重复性工作中解放出来，专注于更有创造性和启发性的教学活动。
+
+## 思考与展望
+
+教育的核心始终是人与人之间的连接和启发。技术只是工具，真正的教育魅力在于激发学生的好奇心和创造力。
+
+---
+
+
+*四冠王地位无可撼动*`
+            },
+            "2025-07-24-AgentFi-Thoughts.md": {
+                title: "Thought of Mia: An AgentFi in Crypto",
+                date: "2025-07-24",
+                category: "Crypto",
+                content: `*夜深人静时的思考*`
+            },
+        };
+
         function getUrlParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
@@ -144,7 +227,16 @@
                 return;
             }
 
-            // 动态加载 Markdown 文件
+            // Try to load from static data first (for GitHub Pages)
+            const postData = articles[filename];
+            
+            if (postData) {
+                // Load from static data
+                displayPost(postData);
+                return;
+            }
+
+            // Fallback to dynamic loading (for local development)
             fetch(`posts/${filename}`)
                 .then(response => {
                     if (!response.ok) {
@@ -181,25 +273,32 @@
                         }
                     }
 
-                    // 更新文章元数据
-                    document.getElementById('post-category').textContent = category;
-                    document.getElementById('post-title').textContent = title;
-                    document.getElementById('post-meta').textContent = formatDate(date);
-
-                    // 将 Markdown 转换为 HTML
-                    document.getElementById('post-content').innerHTML = marked.parse(content);
-
-                    // 更新页面标题
-                    document.title = `${title} - Yuhong Dai`;
-
-                    // 显示文章并隐藏加载状态
-                    loading.style.display = 'none';
-                    article.style.display = 'block';
+                    displayPost({ title, category, date, content });
                 })
                 .catch(error => {
                     console.error('加载文章时出错:', error);
-                    loading.innerHTML = '<p>文章加载失败。请确保使用HTTP服务器访问网站，而不是直接打开文件。</p>';
+                    loading.innerHTML = '<p>文章未找到，请检查文件名是否正确。</p>';
                 });
+        }
+
+        function displayPost(postData) {
+            const loading = document.getElementById('loading');
+            const article = document.getElementById('post-article');
+
+            // 更新文章元数据
+            document.getElementById('post-category').textContent = postData.category;
+            document.getElementById('post-title').textContent = postData.title;
+            document.getElementById('post-meta').textContent = formatDate(postData.date);
+
+            // 将 Markdown 转换为 HTML
+            document.getElementById('post-content').innerHTML = marked.parse(postData.content);
+
+            // 更新页面标题
+            document.title = `${postData.title} - Yuhong Dai`;
+
+            // 显示文章并隐藏加载状态
+            loading.style.display = 'none';
+            article.style.display = 'block';
         }
 
         document.addEventListener('DOMContentLoaded', loadPost);
