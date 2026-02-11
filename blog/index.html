@@ -1,180 +1,82 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!doctype html>
+<html lang="zh">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Blog - Yuhong Dai</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
-    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="../images/iu_green.jpg">
-    <style>
-        .blog-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px 20px;
-        }
-        .blog-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .blog-title {
-            font-family: 'Nunito', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .blog-subtitle {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1.1rem;
-            color: #666;
-        }
-        .post-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-left: 4px solid #9ee908;
-        }
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-        .post-title {
-            font-family: 'Nunito', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-            text-decoration: none;
-        }
-        .post-title:hover {
-            color: #9ee908;
-            text-decoration: none;
-        }
-        .post-meta {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 15px;
-        }
-        .post-excerpt {
-            font-family: 'Quicksand', sans-serif;
-            color: #555;
-            line-height: 1.6;
-        }
-        .post-category {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-top: 15px;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .post-category:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: #9ee908;
-            text-decoration: none;
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 500;
-        }
-        .back-link:hover {
-            color: #7bc906;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog - Yuhong Dai</title>
+  <link rel="stylesheet" href="../stylesheet.css">
+  <link rel="icon" type="image/png" href="../images/iu_green.jpg">
 </head>
 <body class="bg_colour">
-    <div class="blog-container">
-        <a href="../index.html" class="back-link">← 返回主页</a>
-        
-        <div class="blog-header">
-            <h1 class="blog-title">个人随笔</h1>
-            <p class="blog-subtitle">记录思考，分享感悟</p>
-        </div>
+  <main class="container">
+    <a href="../index.html" class="back-link">← 返回主页</a>
 
-        <div id="blog-posts">
-            <!-- Blog posts will be loaded here -->
-        </div>
-    </div>
+    <header class="section" style="padding-top: 0;">
+      <h1 class="page-title">个人随笔</h1>
+      <p class="page-subtitle">记录思考，分享感悟</p>
+    </header>
 
-    <script>
-        // Blog posts data - manually maintained for GitHub Pages compatibility
-                                        const blogPosts = [
-            {
-                title: "2025 RoboMaster 有感",
-                date: "2025-08-03",
-                category: "技术思考",
-                excerpt: "关于2025赛季RoboMaster的一些思考与感触",
-                filename: "2025-08-03-2025RM-Thoughts.md"
-            },
-            {
-                title: "Thought of Mia: An AgentFi in Crypto",
-                date: "2025-07-24",
-                category: "Crypto",
-                excerpt: "关于Crypto+Agent的学习与思考",
-                filename: "2025-07-24-AgentFi-Thoughts.md"
-            },
-            {
-                title: "生活随想",
-                date: "2024-02-20",
-                category: "生活感悟",
-                excerpt: "关于生活、成长和自我认知的一些随想。",
-                filename: "2024-02-20-life-reflections.md"
-            },
-            {
-                title: "AI与教育的思考",
-                date: "2024-01-15",
-                category: "技术思考",
-                excerpt: "关于人工智能在教育领域应用的一些个人思考和观察。",
-                filename: "2024-01-15-thoughts-on-ai-education.md"
-            },
-        ];
+    <ul id="blog-posts" class="post-list" aria-label="Blog posts"></ul>
+  </main>
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('zh-CN', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-        }
+  <script>
+    // Blog posts data - manually maintained for GitHub Pages compatibility
+    const blogPosts = [
+      {
+        title: "2025 RoboMaster 有感",
+        date: "2025-08-03",
+        category: "技术思考",
+        excerpt: "关于2025赛季RoboMaster的一些思考与感触",
+        filename: "2025-08-03-2025RM-Thoughts.md"
+      },
+      {
+        title: "Thought of Mia: An AgentFi in Crypto",
+        date: "2025-07-24",
+        category: "Crypto",
+        excerpt: "关于Crypto+Agent的学习与思考",
+        filename: "2025-07-24-AgentFi-Thoughts.md"
+      },
+      {
+        title: "生活随想",
+        date: "2024-02-20",
+        category: "生活感悟",
+        excerpt: "关于生活、成长和自我认知的一些随想。",
+        filename: "2024-02-20-life-reflections.md"
+      },
+      {
+        title: "AI与教育的思考",
+        date: "2024-01-15",
+        category: "技术思考",
+        excerpt: "关于人工智能在教育领域应用的一些个人思考和观察。",
+        filename: "2024-01-15-thoughts-on-ai-education.md"
+      }
+    ];
 
-        function renderBlogPosts() {
-            const container = document.getElementById('blog-posts');
-            container.innerHTML = '';
-            
-            // 按日期排序（最新的在前面）
-            const sortedPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            sortedPosts.forEach(post => {
-                const postElement = document.createElement('article');
-                postElement.className = 'post-card';
-                postElement.innerHTML = `
-                    <h2><a href="post.html?file=${post.filename}" class="post-title">${post.title}</a></h2>
-                    <div class="post-meta">${formatDate(post.date)}</div>
-                    <p class="post-excerpt">${post.excerpt}</p>
-                    <span class="post-category">${post.category}</span>
-                `;
-                container.appendChild(postElement);
-            });
-        }
+    function formatDate(dateString) {
+      return dateString;
+    }
 
-        document.addEventListener('DOMContentLoaded', renderBlogPosts);
-    </script>
+    function renderBlogPosts() {
+      const container = document.getElementById('blog-posts');
+      container.innerHTML = '';
+
+      const sortedPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      sortedPosts.forEach((post) => {
+        const item = document.createElement('li');
+        item.className = 'post-card';
+        item.innerHTML = `
+          <h2 class="post-card-title">
+            <a href="post.html?file=${encodeURIComponent(post.filename)}">${post.title}</a>
+          </h2>
+          <div class="post-meta">${formatDate(post.date)} · ${post.category}</div>
+          <div class="post-excerpt">${post.excerpt}</div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderBlogPosts);
+  </script>
 </body>
 </html>

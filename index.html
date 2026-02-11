@@ -1,585 +1,312 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102766803-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Yuhong Dai">
+  <meta name="description" content="Yuhong Dai — Computer Science, Shenzhen University. Research interests include efficient inference and context compression for large language models.">
+  <meta name="keywords" content="Yuhong Dai, Shenzhen University, Computer Science, LLM, Efficient Inference, Context Compression">
+  <title>Yuhong Dai</title>
 
-        gtag('config', 'UA-102766803-2');
-        // 追踪当前旋转角度
-        let avatar = document.querySelector('.rotate-avatar');
-        let wrapper = document.querySelector('.avatar-wrapper');
-        let start = null;
-        let rotation = 0;
-        let animationFrame;
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="icon" type="image/png" href="images/iu_green.jpg">
 
-        function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = timestamp - start;
-        rotation = (progress / 5000) * 360 % 360;
-        avatar.style.setProperty('--current-rotation', rotation + 'deg');
-        animationFrame = requestAnimationFrame(step);
-        }
-
-        animationFrame = requestAnimationFrame(step);
-    </script>
-
-
-    <title>Yuhong Dai</title>
-    
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <meta name="author" content="Yuhong Dai">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Description" content="Yuhong Dai | Undergraduate@Shenzhen University | Computer Science">
-    <meta name="keywords" content="Yuhong Dai, Shenzhen University, Computer Science">
-
-    <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
-    <link rel="icon" type="image/png" href="images/iu_green.jpg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102766803-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-102766803-2');
+  </script>
 </head>
 <body class="bg_colour">
-    <!-- Sidebar Toggle Button -->
-    <button class="sidebar-toggle" id="sidebar-toggle">
-        <span id="toggle-icon">☰</span>
-    </button>
-    
-    <!-- Language Toggle Button -->
-    <button id="language-toggle" style="
-        position: fixed; 
-        top: 20px; 
-        right: 20px; 
-        z-index: 1000;
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        color: white;
-        border: none;
-        padding: 10px 18px;
-        border-radius: 24px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-        transition: all 0.3s ease;
-        font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'SF Pro Display', sans-serif;
-        letter-spacing: 0.01em;
-    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(99, 102, 241, 0.5)'" 
-       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(99, 102, 241, 0.4)'">中文</button>
-    
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h2 class="sidebar-title">导航</h2>
-            <p class="sidebar-subtitle">Navigation</p>
-        </div>
-        <ul class="sidebar-nav">
-            <li class="nav-item">
-                <a href="#" class="nav-link active" data-section="home">
-                    <span class="nav-icon">🏠</span>
-                    <span data-i18n="navHome">首页</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#content-internships" class="nav-link" data-section="experience">
-                    <span class="nav-icon">✈️</span>
-                    <span data-i18n="navExperience">经历</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#content-interests" class="nav-link" data-section="research">
-                    <span class="nav-icon">🔬</span>
-                    <span data-i18n="navResearch">研究兴趣</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#content-publications" class="nav-link" data-section="publications">
-                    <span class="nav-icon">📚</span>
-                    <span data-i18n="navPublications">论文</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="blog/index.html" class="nav-link blog-indicator" data-section="blog">
-                    <span class="nav-icon">✍️</span>
-                    <span data-i18n="navBlog">个人随笔</span>
-                </a>
-            </li>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-avatar">
+        <a href="images/iu_green.jpg" aria-label="Open profile photo">
+          <img class="avatar" src="images/iu_green.jpg" alt="Yuhong Dai">
+        </a>
+      </div>
+
+      <div class="header-main">
+        <h1 class="site-title">Yuhong Dai</h1>
+        <p class="site-tagline" data-i18n="tagline">Undergraduate, Computer Science, Shenzhen University</p>
+
+        <p class="site-contact">
+          <strong data-i18n="emailLabel">Email:</strong>
+          <a href="mailto:broalantaps123@gmail.com">broalantaps123@gmail.com</a>
+        </p>
+
+        <ul class="link-list" aria-label="External links">
+          <li>
+            <a href="https://scholar.google.com/citations?hl=zh-CN&user=KxXSz_gAAAAJ" target="_blank" rel="noopener" data-i18n="googleScholar">
+              Google Scholar
+            </a>
+          </li>
+          <li><a href="https://github.com/broalantaps" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="blog/index.html" data-i18n="navBlog">Blog</a></li>
         </ul>
+      </div>
+
+      <div class="header-actions">
+        <button id="language-toggle" class="lang-toggle" type="button">中文</button>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Primary">
+      <div class="container nav-inner">
+        <a class="nav-link" href="#about" data-i18n="navAbout">About</a>
+        <a class="nav-link" href="#research" data-i18n="navResearch">Research</a>
+        <a class="nav-link" href="#publications" data-i18n="navPublications">Publications</a>
+        <a class="nav-link" href="#experience" data-i18n="navExperience">Experience</a>
+      </div>
     </nav>
-    
-    <!-- Sidebar Overlay -->
-    <div class="sidebar-overlay" id="sidebar-overlay"></div>
-    
-    <!-- Main Content -->
-    <div class="main-content" id="main-content">
-    <table border=0 class="bg_colour" style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <tr style="padding:0px">
-            <td style="padding:0px">
-                
-                <!-- Name tab -->
-                <table border=0 class="bg_colour" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-                    
-                    
-                    <tr style="padding:0px">
-                        <td style="padding:2.5%;width:20%;max-width:20%">
-                            <!-- <a href="images/iu_green.jpg"><img style="width:100%;max-width:100%" alt="profile photo" src="images/iu_green.jpg" class="img-circle rotate-avatar"></a> -->
-                             <a href="images/iu_green.jpg">
-                                <div class="avatar-wrapper">
-                                    <img style="width:100%;max-width:100%" alt="profile photo" src="images/iu_green.jpg" class="img-circle rotate-avatar">
-                                </div>
-                            </a>
-                        </td>
-                        <td style="padding:2.5%;width:60%;vertical-align:middle">
-                            <p style="text-align:center">
-                                <h1  style="text-align:center"><name>Yuhong Dai</name></h1>
-                            </p>
-                            <p style="text-align:center">
-                            &nbsp|&nbsp
-                            <img src="images/google_scholar_logo.png" alt="Google Scholar" style="width: 20px; height: 20px; vertical-align: middle; position: relative; top: -1px;">
-                            <a href="https://scholar.google.com/citations?hl=zh-CN&user=KxXSz_gAAAAJ" target="_blank" data-i18n="googleScholar">Google Scholar</a>
-                            &nbsp|&nbsp
-                            <img src="images/github_logo.png", alt="github" style="width: 18px; height: 18px; vertical-align: middle; position: relative; top: -1px;">
-                            <a href="https://github.com/broalantaps" target="_blank" >GitHub</a> &nbsp|&nbsp
-                            <br>
-                            &nbsp|&nbsp
-                            <img src="images/interest_logo.png" alt="interest" style="width: 22px; height: 22px; vertical-align: middle; position: relative; top: -1.5px;">
-                            <a href="#interests" onclick="Expand('interests')" data-i18n="linkResearch">Research Interests</a>
-                            &nbsp|&nbsp
-                            <img src="images/paper_logo.png" alt="publications" style="width: 18px; height: 18px; vertical-align: middle; position: relative;">
-                            <a href="#publications" onclick="Expand('publications')" data-i18n="linkPublications">Publications</a>
-                            &nbsp|&nbsp
-                            </p>
-                            <p style="text-align:center"> <strong data-i18n="emailLabel">Email:</strong> <a href="mailto:broalantaps123@gmail.com">broalantaps123@gmail.com</a> </p>
-                            <p></p>
-                            <p style="text-align:center"><strong data-i18n="quote">"We are not determined by our experiences, <br>but the meaning we give them is self-determining."</strong>&nbsp;&nbsp;--<a href="https://en.wikipedia.org/wiki/Alfred_Adler" target="_blank" data-i18n="adlerName">Alfred Adler</a></p>
-                            <p></p>
-                        </td>
-                        <td style="padding:2.5%;width:10%;max-width:10%">
-                    </tr>
-                </tbody></table>
+  </header>
 
+  <main id="content" class="container">
+    <section id="about" class="section">
+      <h2 class="section-title" data-i18n="aboutHeading">About</h2>
+      <p class="prose" data-i18n="about">
+        I am a senior undergraduate majoring in Computer Science at Shenzhen University. I am currently seeking PhD and research internship opportunities in efficient inference for large models. If you are interested, please feel free to <a href="mailto:broalantaps123@gmail.com" target="_blank" rel="noopener">email</a> me.
+      </p>
+    </section>
 
-<!-- About section, quick links -->
+    <section id="research" class="section">
+      <h2 class="section-title" data-i18n="researchHeading">Research Interests</h2>
+      <p class="prose"><strong data-i18n="interest1">I am interested in context compression for LLM-based agents and next-generation efficient model architectures.</strong></p>
+      <p class="prose" data-i18n="interest2">My previous work focused on large model pre-training, efficient inference, and multimodal AI companions.</p>
+    </section>
 
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tbody>
-        <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="about-section" data-i18n="about">
-                    I am a third-year CS undergraduate student at Shenzhen University. I'm courageous in pursuing initiatives I believe create real value. I am seeking opportunities to pursue a PhD and research internships at major tech companies (efficient inference for large models). Feel free to drop me an
-                    <a href="mailto:broalantaps123@gmail.com" target="_blank">e-mail</a>
-                    if you would like to connect!
-                </p>
-            </td>
-            <!-- <td style="padding:2.5%;width:30%;max-width:30%">
-            </td> -->
-        </tr>
-    </tbody>
-</table>
-<hr class="soft">
-<!--Internships-->
-<button type="button"
-        class="collapsible"
-        data-toggle="collapse"
-        data-target="#content-internships"
-        id="internships">
-    <span class="fly-plane">✈️</span> <span data-i18n="btnExperience">Experience</span>
-</button>
+    <section id="publications" class="section">
+      <h2 class="section-title" data-i18n="publicationsHeading">Publications</h2>
 
-<!-- <button style="border:0px; background-color: transparent; outline:none; font-weight: bolder; color: #f04719;;" type="button" class="collapsible" data-toggle="collapse" data-target="#content-internships" id="internships"><heading>✈️ Experience</heading></button> -->
-<div id="content-internships" class="collapse in" style="box-sizing: border-box; width: 100%;">
-    <div style="padding: 20px 20px 0 0px; width: 100%; margin: 0 auto; box-sizing: border-box;">
-        <div class="experience-card" style="padding: 24px; box-sizing: border-box;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <p style="margin: 5px 0; color: #666; font-size: 16px;">
-                        <img src="images/stepfun_logo.png" alt="StepFun" style="width: 22px; height: 22px; vertical-align: middle; position: relative; top: -1px; margin-right: 5px;">
-                        <strong style="color: black;" data-i18n="stepfunTitle">StepFun</strong>
-                    </p>
-                    <p style="margin: 5px 0; color: #666; font-size: 14px;" data-i18n="stepfunIntern">Foundation Model Post-training Intern</p>
-                </div>
-                <div style="text-align: right; color: #666; font-size: 14px;">
-                    <p style="margin: 0; position: relative; top: 20px;" data-i18n="stepfunLocation">Haidian, Beijing</p>
-                </div>
+      <ol class="pub-list">
+        <li class="pub-item">
+          <div class="pub-thumb">
+            <img src="images/pcc_efficiency.png" alt="Pretraining Context Compressor thumbnail" loading="lazy">
+          </div>
+          <div class="pub-body">
+            <div class="pub-title" data-i18n="paper1Title">Pretraining Context Compressor for Large Language Models with Embedding-Based Memory</div>
+            <div class="pub-authors">Yuhong Dai, Jianxun Lian, Yitian Huang, Wei Zhang, Mingyang Zhou, Mingqi Wu, Xing Xie, Hao Liao</div>
+            <div class="pub-venue" data-i18n="paper1Venue"><em>ACL 2025 (Main Conference)</em></div>
+            <div class="pub-links">
+              <a href="https://www.microsoft.com/" target="_blank" rel="noopener">paper</a>
+              <span class="sep">·</span>
+              <a href="https://github.com/broalantaps/PCC" target="_blank" rel="noopener">code</a>
             </div>
-            <p style="margin: 15px 0 0 0; font-size: 14px; line-height: 1.6; color: #444; font-family: 'Nunito', sans-serif; font-weight: 500;" data-i18n="stepfunDesc">
-                Responsible for Reward Model and RLHF pipeline of Step series models.
-            </p>
-        </div>
-    </div>
+          </div>
+        </li>
+      </ol>
+    </section>
 
-    <div style="padding: 20px 20px 0 0px; width: 100%; margin: 0 auto; box-sizing: border-box;">
-        <div class="experience-card" style="padding: 24px; box-sizing: border-box;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <p style="margin: 5px 0; color: #666; font-size: 16px;">
-                        <img src="images/amber_logo.png" alt="Amber Group" style="width: 22px; height: 22px; vertical-align: middle; position: relative; top: -1px; margin-right: 5px;">
-                        <strong style="color: black;" data-i18n="amberTitle">Amber Group</strong>
-                    </p>
-                    <p style="margin: 5px 0; color: #666; font-size: 14px;" data-i18n="amberIntern">Research Intern</p>
-                </div>
-                <div style="text-align: right; color: #666; font-size: 14px;">
-                    <p style="margin: 0; position: relative; top: 20px;" data-i18n="amberLocation">Hong Kong, SAR</p>
-                </div>
+    <section id="experience" class="section">
+      <h2 class="section-title" data-i18n="experienceHeading">Experience</h2>
+
+      <div class="item-list">
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title">
+              <img class="item-logo" src="images/stepfun_logo.png" alt="" loading="lazy">
+              <span data-i18n="stepfunTitle">StepFun</span>
             </div>
-            <p style="margin: 15px 0 0 0; font-size: 14px; line-height: 1.6; color: #444; font-family: 'Nunito', sans-serif; font-weight: 500;" data-i18n="amberDesc">
-                Training LLM financial advisor models using RLHF in financial scenarios.
-            </p>
-        </div>
-    </div>
+            <div class="item-meta" data-i18n="stepfunLocation">Beijing, China</div>
+          </div>
+          <div class="item-subtitle" data-i18n="stepfunIntern">Foundation Model Post-training Intern</div>
+          <div class="item-desc" data-i18n="stepfunDesc">Worked on reward modeling and RLHF pipelines for Step series models.</div>
+        </article>
 
-    <div style="padding: 20px 20px 0 0px; width: 100%; margin: 0 auto; box-sizing: border-box;">
-        <div class="experience-card" style="padding: 24px; box-sizing: border-box;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <p style="margin: 5px 0; color: #666; font-size: 16px;">
-                        <img src="images/microsoft.png" alt="Microsoft" style="width: 20px; height: 20px; vertical-align: middle; position: relative; top: -1px; margin-right: 5px;">
-                        <strong style="color: black;" data-i18n="msraTitle">Microsoft Research Asia</strong>
-                    </p>
-                    <p style="margin: 5px 0; color: #666; font-size: 14px;" data-i18n="msraIntern">Internship in Social Computing Group</p>
-                    <p style="margin: 5px 0; color: #666; font-size: 14px; font-weight: bolder;" data-i18n="msraAward">🏆 Received "Star Of Tomorrow" Internship Award</p>
-                </div>
-                <div style="text-align: right; color: #666; font-size: 14px;">
-                    <p style="margin: 0; position: relative; top: 20px;" data-i18n="msraLocation">Beijing, China</p>
-                </div>
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title">
+              <img class="item-logo" src="images/amber_logo.png" alt="" loading="lazy">
+              <span data-i18n="amberTitle">Amber Group</span>
             </div>
-            <p style="margin: 15px 0 0 0; font-size: 14px; line-height: 1.6; color: #444; font-family: 'Nunito', sans-serif; font-weight: 500;" data-i18n="msraDesc">
-                This place is like Whampoa Military Academy for computer science majors——I still can't believe I actually snagged an internship here! My time at MSRA has been an absoulte blast:
-                I leveled up my horizons, met a bunch of insanely smart and super-fun people, and even joined an epic board-game club. I'm gonna remember this ride forever! ❤️
-            </p>
-        </div>
-    </div>
+            <div class="item-meta" data-i18n="amberLocation">Hong Kong SAR, China</div>
+          </div>
+          <div class="item-subtitle" data-i18n="amberIntern">Research Intern</div>
+          <div class="item-desc" data-i18n="amberDesc">Trained LLM-based financial advisor models with RLHF in financial scenarios.</div>
+        </article>
 
-    <div style="padding: 20px 20px 0 0px; width: 100%; margin: 0 auto; box-sizing: border-box;">
-        <div class="experience-card" style="padding: 24px; box-sizing: border-box;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <p style="margin: 5px 0; color: #666; font-size: 16px;">
-                        <img src="images/tencent_logo.png" alt="Tencent" style="width: 42px; height: 16px; vertical-align: middle; position: relative; top: -1px; left: -5px; margin-right: -7px;">
-                        <strong style="color: black;" data-i18n="tencentTitle">Tencent</strong>
-                    </p>
-                    <p style="margin: 5px 0; color: #666; font-size: 14px;" data-i18n="tencentRole">Software Engineer Intern</p>
-                </div>
-                <div style="text-align: right; color: #666; font-size: 14px;">
-                    <p style="margin: 0; position: relative; top: 20px;" data-i18n="tencentLocation">Shenzhen, China</p>
-                </div>
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title">
+              <img class="item-logo" src="images/microsoft.png" alt="" loading="lazy">
+              <span data-i18n="msraTitle">Microsoft Research Asia</span>
             </div>
-        </div>
-    </div>
+            <div class="item-meta" data-i18n="msraLocation">Beijing, China</div>
+          </div>
+          <div class="item-subtitle" data-i18n="msraIntern">Research Intern, Social Computing Group</div>
+          <div class="item-desc">
+            <span class="badge" data-i18n="msraAward">Awarded "Star of Tomorrow" Internship Award</span>
+            <span class="sep">·</span>
+            <span data-i18n="msraDesc">Conducted research and prototyping work in social computing.</span>
+          </div>
+        </article>
 
-    <div style="padding: 20px 20px 0 0px; width: 100%; margin: 0 auto; box-sizing: border-box;">
-        <div class="experience-card" style="padding: 24px; box-sizing: border-box;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <p style="margin: 5px 0; color: #666; font-size: 16px;">
-                        <img src="images/RoboMaster-official-logo.png" alt="Tencent" style="width: 42px; height: 30px; vertical-align: middle; position: relative; top: -1px; left: -4px; margin-right: -3px;">
-                        <strong style="color: black;" data-i18n="roboTitle">RoboMaster</strong>
-                    </p>
-                    <p style="margin: 5px 0; color: #666; font-size: 14px;" data-i18n="roboRole">Member of Vision Group</p>
-                </div>
-                <div style="text-align: right; color: #666; font-size: 14px;">
-                    <p style="margin: 0; position: relative; top: 20px;" data-i18n="roboLoc1">Dongguan, China</p>
-                    <p style="margin: 0; position: relative; top: 20px;" data-i18n="roboLoc2">Changsha, China</p>
-                    <p style="margin: 0; position: relative; top: 20px;" data-i18n="roboLoc3">Shenzhen, China</p>
-                </div>
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title">
+              <img class="item-logo item-logo-wide" src="images/tencent_logo.png" alt="" loading="lazy">
+              <span data-i18n="tencentTitle">Tencent</span>
             </div>
-            <p style="margin: 15px 0 0 0; font-size: 14px; line-height: 1.6; color: #444; font-family: 'Nunito', sans-serif; font-weight: 500;" data-i18n="roboDesc">
-                This robotic competition has cranked out a whole generation of young engineers. I spent two unforgettable, high-octane years here——crazy highs, tough lows, and finally a sense of letting go.
-                Along the way I met the best friends of my college life. They are crazy talented people who never hesitated to give it their all.
-            </p>
-        </div>
-    </div>
-</div>
+            <div class="item-meta" data-i18n="tencentLocation">Shenzhen, China</div>
+          </div>
+          <div class="item-subtitle" data-i18n="tencentRole">Software Engineering Intern</div>
+        </article>
 
-
-<hr class="soft">
-
-
-<!-- Research Interests -->
-<button style="border:0px transparent; background-color: transparent;outline:none;" type="button" class="collapsible" data-toggle="collapse" data-target="#content-interests" id="interests">
-    <span class="fly-plane">🔬</span> <heading data-i18n="headingResearch">Research Interests</heading>
-</button>
-<div id="content-interests" class="collapse in">
-    <div style="padding:10px; width:100%; margin-right:auto; margin-left:auto;">
-        <p><strong data-i18n="interest1">I am committed to context compression engineering for AI Agents and exploring next-generation efficient large model architectures.</strong></p>
-        <br>
-        <p data-i18n="interest2">My previous research has focused on efficient inference for LLMs pre-training and on multimodal AI companions.</p>
-    </div>
-</div>
-<hr class="soft">
-
-
-
-
-<!-- Publications -->
-<button style="border:0px transparent; background-color: transparent;outline:none;" type="button" class="collapsible" data-toggle="collapse" data-target="#content-publications" id="publications">
-    <span class="fly-plane">📄</span> <heading data-i18n="headingPublications">Publications</heading>
-</button>
-<div id="content-publications" class="collapse in">
-<table border=0 class="bg_colour" style="padding:20px;width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-<tbody>
-    <tr>
-        <td style="padding:0px;width:100%;vertical-align:middle">
-            <div style="display:flex; align-items:top; margin-bottom:10px;">
-                <img src="images/pcc_efficiency.png" alt="PCC" style="width:120px; height:120px; object-fit:cover; margin-right:20px;">
-                <div>
-                    <p>
-                        <papertitle data-i18n="paper1Title"><strong>Pretraining Context Compressor for Large Language Models with Embedding-Based Memory</strong></papertitle>
-                        <br>
-                        Yuhong Dai, Jianxun Lian, Yitian Huang, Wei Zhang, Mingyang Zhou, Mingqi Wu, Xing Xie, Hao Liao
-                        <br>
-                        <em>ACL'2025 Main</em>
-                        [<a href="www.microsoft.com" target="_blank">paper</a>][<a href="https://github.com/broalantaps/PCC" target="_blank">code</a>]
-                    </p>
-                </div>
+        <article class="item">
+          <div class="item-head">
+            <div class="item-title">
+              <img class="item-logo" src="images/RoboMaster-official-logo.png" alt="" loading="lazy">
+              <span data-i18n="roboTitle">RoboMaster</span>
             </div>
-        </td>
-    </tr>
-</tbody>
-</table>
-</div>
-<hr class="soft">
+            <div class="item-meta" data-i18n="roboLocation">China (Dongguan / Changsha / Shenzhen)</div>
+          </div>
+          <div class="item-subtitle" data-i18n="roboRole">Vision Team Member</div>
+          <div class="item-desc" data-i18n="roboDesc">Developed perception and vision modules for autonomous robotic systems in RoboMaster competitions.</div>
+        </article>
+      </div>
+    </section>
 
-<!-- Professional Services -->
-<!-- 
-<button style="border:0px transparent; background-color: transparent;outline:none;"type="button" class="collapsible" data-toggle="collapse" data-target="#content-professional-services" id="professional-services"><heading>Professional Services</heading></button>
-<div id="content-misc" class="collapse in">
-    <div style="padding:10px; width:100%; margin-right:auto; margin-left:auto;">
-        <p>&bull; </p>
-</div>
-</div>
-<hr class="soft">                 -->
+    <footer class="site-footer">
+      <p class="muted" data-i18n="templateCredit">Template inspired by Jon Barron and ada-cheng.</p>
+    </footer>
+  </main>
 
+  <script>
+    const translations = {
+      en: {
+        navAbout: 'About',
+        navResearch: 'Research',
+        navPublications: 'Publications',
+        navExperience: 'Experience',
+        navBlog: 'Blog',
 
-<!-- Misc -->
+        googleScholar: 'Google Scholar',
+        emailLabel: 'Email:',
+        tagline: 'Undergraduate, Computer Science, Shenzhen University',
 
-<!-- <button style="border:0px transparent; background-color: transparent;outline:none;"type="button" class="collapsible" data-toggle="collapse" data-target="#content-misc" id="misc"><heading>Misc.</heading></button>
-<div id="content-misc" class="collapse in">
-    <div style="padding:10px; width:100%; margin-right:auto; margin-left:auto;">
-        <p> I have a passion for enjoying delicious food. My favorite idol is iu.</p>
-</div>
-<hr class="soft">
-</div> -->
+        aboutHeading: 'About',
+        researchHeading: 'Research Interests',
+        publicationsHeading: 'Publications',
+        experienceHeading: 'Experience',
 
+        about: 'I am a senior undergraduate majoring in Computer Science at Shenzhen University. I am currently seeking PhD and research internship opportunities in efficient inference for large models. If you are interested, please feel free to <a href=\"mailto:broalantaps123@gmail.com\" target=\"_blank\" rel=\"noopener\">email</a> me.',
 
+        interest1: 'I am interested in context compression for LLM-based agents and next-generation efficient model architectures.',
+        interest2: 'My previous work focused on large model pre-training, efficient inference, and multimodal AI companions.',
 
+        paper1Title: 'Pretraining Context Compressor for Large Language Models with Embedding-Based Memory',
+        paper1Venue: '<em>ACL 2025 (Main Conference)</em>',
 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>This template is inherited from ada-cheng's <a href="https://ada-cheng.github.io/", target="_blank">website</a>, which was modified from Jon Barron's <a href="https://jonbarron.info/" target="_blank">website</a>. </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p></p>
-            </td>
-        </tr>
-    </table>
+        stepfunTitle: 'StepFun',
+        stepfunIntern: 'Foundation Model Post-training Intern',
+        stepfunLocation: 'Beijing, China',
+        stepfunDesc: 'Worked on reward modeling and RLHF pipelines for Step series models.',
 
-    <script>
-        const translations = {
-            en: {
-                googleScholar: 'Google Scholar',
-                linkResearch: 'Research Interests',
-                linkPublications: 'Publications',
-                emailLabel: 'Email: ',
-                quote: '"It is not what happens to you, <br>but how you react to it that matters."',
-                adlerName: 'Epictetus',
-                about: 'I am a senior student majoring in Computer Science at Shenzhen University. I am passionate and brave about things I consider valuable for self-recognition. I am seeking opportunities to pursue a PhD and research internships at major tech companies (efficient inference for large models). If you are interested, please feel free to <a href="mailto:broalantaps123@gmail.com" target="_blank">email</a> me!',
-                btnExperience: 'Experience',
-                stepfunTitle: 'StepFun',
-                stepfunIntern: 'Foundation Model Post-training Intern',
-                stepfunLocation: 'Haidian, Beijing',
-                stepfunDesc: 'Responsible for Reward Model and RLHF pipeline of Step series models.',
-                amberTitle: 'Amber Group',
-                amberIntern: 'Research Intern',
-                amberLocation: 'Hong Kong, SAR',
-                amberDesc: 'Training LLM financial advisor models using RLHF in financial scenarios.',
-                msraTitle: 'Microsoft Research Asia',
-                msraIntern: 'Research Intern in Social Computing Group',
-                msraAward: '🏆 Awarded "Star of Tomorrow" Internship Award',
-                msraLocation: 'Beijing, China',
-                msraDesc: 'This is the "Whampoa Military Academy" for computer science students. I still feel lucky and incredible to have had the opportunity to intern here. My journey at Microsoft Research Asia broadened my horizons, allowed me to meet many brilliant and interesting people, and brought me unique joy through the vibrant and creative board game club—all of which will remain unforgettable memories. ❤️',
-                tencentTitle: 'Tencent',
-                tencentRole: 'Software Engineering Intern',
-                tencentLocation: 'Shenzhen, China',
-                roboTitle: 'RoboMaster',
-                roboRole: 'Vision Team Member',
-                roboLoc1: 'Dongguan, China',
-                roboLoc2: 'Changsha, China',
-                roboLoc3: 'Shenzhen, China',
-                roboDesc: 'This robotics competition has nurtured and produced countless young engineers. The two years here were unforgettable, passionate, and ultimately settling and relieving years for me. I met my best companions during university here—they are talented and willing to invest and contribute.',
-                headingResearch: 'Research Interests',
-                interest1: 'I am committed to context compression engineering for AI Agents and exploring next-generation efficient large model architectures.',
-                interest2: 'My previous research focused on large model pretraining, efficient inference, and multimodal AI-Companion.',
-                headingPublications: 'Publications',
-                paper1Title: '<strong>Pretraining Context Compressor for Large Language Models with Embedding-Based Memory</strong>',
-                navHome: 'Home',
-                navResearch: 'Research Interest',
-                navExperience: 'Experience',
-                navPublications: 'Publications',
-                navBlog: 'Personal Essays'
-            },
-            zh: {
-                googleScholar: '谷歌学术',
-                linkResearch: '研究兴趣',
-                linkPublications: '论文',
-                emailLabel: '邮箱：',
-                quote: '"决定我们自身的不是过去的经历，<br>而是我们自己赋予经历的意义。"',
-                adlerName: '阿尔弗雷德·阿德勒',
-                about: '我是一名深圳大学计算机专业的大四学生，我对于自我认可的有价值事充满热情与勇敢。我正在寻找攻读博士以及大厂科研实习（大模型高效推理方向）的机会。如有兴趣欢迎给我发 <a href="mailto:broalantaps123@gmail.com" target="_blank">邮件</a> 联系！',
-                btnExperience: '经历',
-                stepfunTitle: 'StepFun',
-                stepfunIntern: '基础模型后训练实习生',
-                stepfunLocation: '北京海淀',
-                stepfunDesc: '负责Step系列模型的Reward Model及RLHF环节。',
-                amberTitle: 'Amber Group',
-                amberIntern: '研究实习生',
-                amberLocation: '中国香港特别行政区',
-                amberDesc: '使用RLHF技术训练金融场景下的大语言模型投顾模型。',
-                msraTitle: '微软亚洲研究院',
-                msraIntern: '社会计算组实习',
-                msraAward: '🏆 获得微软亚洲研究院"明日之星"实习奖',
-                msraLocation: '中国北京',
-                msraDesc: '这里是计算机学子的"黄埔军校"。能在这里实习，我至今仍感到幸运和难以置信。在微软亚洲研究院的这段旅程让我开阔了视野，结识了许多卓越而风趣的朋友，也因为活力满满、创意十足的桌游社而收获了独特的快乐——这一切都将成为我难以磨灭的记忆。❤️',
-                tencentTitle: '腾讯',
-                tencentRole: '软件工程实习生',
-                tencentLocation: '中国深圳',
-                roboTitle: '机甲大师',
-                roboRole: '视觉组成员',
-                roboLoc1: '中国东莞',
-                roboLoc2: '中国长沙',
-                roboLoc3: '中国深圳',
-                roboDesc: '这项机器人竞赛孕育并走出了无数青年工程师。这里的两年，是我难忘、热血而终归沉淀释怀的岁月。我在其中结识了大学时期最要好的伙伴——他们才华横溢，勇于投入与奉献。',
-                headingResearch: '研究兴趣',
-                interest1: '我致力于AI Agent上下文压缩工程以及探索下一代高效大模型架构。',
-                interest2: '我之前的研究集中在大模型预训练、高效推理和多模态 AI-Companion。',
-                headingPublications: '论文',
-                paper1Title: '<strong>Pretraining Context Compressor for Large Language Models with Embedding-Based Memory</strong>'
-            }
-        };
+        amberTitle: 'Amber Group',
+        amberIntern: 'Research Intern',
+        amberLocation: 'Hong Kong SAR, China',
+        amberDesc: 'Trained LLM-based financial advisor models with RLHF in financial scenarios.',
 
-        function updateLanguage(lang) {
-            document.documentElement.lang = lang;
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                const value = translations[lang][key];
-                if (value !== undefined) {
-                    el.innerHTML = value;
-                }
-            });
-            document.getElementById('language-toggle').textContent = lang === 'en' ? '中文' : 'English';
+        msraTitle: 'Microsoft Research Asia',
+        msraIntern: 'Research Intern, Social Computing Group',
+        msraAward: 'Awarded \"Star of Tomorrow\" Internship Award',
+        msraLocation: 'Beijing, China',
+        msraDesc: 'Conducted research and prototyping work in social computing.',
+
+        tencentTitle: 'Tencent',
+        tencentRole: 'Software Engineering Intern',
+        tencentLocation: 'Shenzhen, China',
+
+        roboTitle: 'RoboMaster',
+        roboRole: 'Vision Team Member',
+        roboLocation: 'China (Dongguan / Changsha / Shenzhen)',
+        roboDesc: 'Developed perception and vision modules for autonomous robotic systems in RoboMaster competitions.',
+
+        templateCredit: 'Template inspired by Jon Barron and ada-cheng.'
+      },
+      zh: {
+        navAbout: '简介',
+        navResearch: '研究',
+        navPublications: '论文',
+        navExperience: '经历',
+        navBlog: '随笔',
+
+        googleScholar: '谷歌学术',
+        emailLabel: '邮箱：',
+        tagline: '深圳大学 · 计算机科学 · 本科生',
+
+        aboutHeading: '简介',
+        researchHeading: '研究兴趣',
+        publicationsHeading: '论文',
+        experienceHeading: '经历',
+
+        about: '我是一名深圳大学计算机专业的本科生，研究兴趣聚焦于大模型高效推理与上下文压缩方向。目前正在寻找博士申请与科研实习机会。如有合作或交流意向，欢迎通过 <a href=\"mailto:broalantaps123@gmail.com\" target=\"_blank\" rel=\"noopener\">邮件</a> 联系。',
+
+        interest1: '我关注 AI Agent 的上下文压缩，以及下一代高效大模型架构。',
+        interest2: '我之前的研究主要涉及大模型预训练、高效推理与多模态 AI Companion。',
+
+        paper1Title: 'Pretraining Context Compressor for Large Language Models with Embedding-Based Memory',
+        paper1Venue: '<em>ACL 2025（主会）</em>',
+
+        stepfunTitle: 'StepFun',
+        stepfunIntern: '基础模型后训练实习生',
+        stepfunLocation: '中国北京',
+        stepfunDesc: '参与 Step 系列模型的 Reward Model 与 RLHF 流程相关工作。',
+
+        amberTitle: 'Amber Group',
+        amberIntern: '研究实习生',
+        amberLocation: '中国香港特别行政区',
+        amberDesc: '在金融场景中使用 RLHF 训练大语言模型投顾模型。',
+
+        msraTitle: '微软亚洲研究院',
+        msraIntern: '社会计算组研究实习',
+        msraAward: '获得微软亚洲研究院“明日之星”实习奖',
+        msraLocation: '中国北京',
+        msraDesc: '参与社会计算方向的研究与原型验证工作。',
+
+        tencentTitle: '腾讯',
+        tencentRole: '软件工程实习生',
+        tencentLocation: '中国深圳',
+
+        roboTitle: '机甲大师',
+        roboRole: '视觉组成员',
+        roboLocation: '中国（东莞 / 长沙 / 深圳）',
+        roboDesc: '在 RoboMaster 竞赛中参与机器人感知与视觉模块相关工程开发。',
+
+        templateCredit: '页面风格参考 Jon Barron 与 ada-cheng 的主页模板。'
+      }
+    };
+
+    function updateLanguage(lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = translations[lang][key];
+        if (value !== undefined) {
+          el.innerHTML = value;
         }
+      });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggle = document.getElementById('language-toggle');
-            toggle.addEventListener('click', () => {
-                const next = document.documentElement.lang === 'en' ? 'zh' : 'en';
-                updateLanguage(next);
-            });
-            updateLanguage(document.documentElement.lang || 'en');
-        });
-        
-        // Sidebar functionality
-        const sidebarToggle = document.getElementById('sidebar-toggle');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-        const mainContent = document.getElementById('main-content');
-        const toggleIcon = document.getElementById('toggle-icon');
-        
-        function toggleSidebar() {
-            const isOpen = sidebar.classList.contains('open');
-            
-            if (isOpen) {
-                sidebar.classList.remove('open');
-                sidebarOverlay.classList.remove('active');
-                mainContent.classList.remove('shifted');
-                sidebarToggle.classList.remove('active');
-                toggleIcon.textContent = '☰';
-            } else {
-                sidebar.classList.add('open');
-                sidebarOverlay.classList.add('active');
-                mainContent.classList.add('shifted');
-                sidebarToggle.classList.add('active');
-                toggleIcon.textContent = '✕';
-            }
-        }
-        
-        sidebarToggle.addEventListener('click', toggleSidebar);
-        sidebarOverlay.addEventListener('click', toggleSidebar);
-        
-        // Navigation link functionality
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                // Don't prevent default for external links (like blog)
-                if (link.getAttribute('href').startsWith('blog/')) {
-                    return;
-                }
-                
-                e.preventDefault();
-                
-                // Remove active class from all links
-                navLinks.forEach(l => l.classList.remove('active'));
-                
-                // Add active class to clicked link
-                link.classList.add('active');
-                
-                // Smooth scroll to section if it's an internal link
-                const href = link.getAttribute('href');
-                if (href.startsWith('#')) {
-                    const targetElement = document.querySelector(href);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-                
-                // Close sidebar on mobile after navigation
-                if (window.innerWidth <= 768) {
-                    toggleSidebar();
-                }
-            });
-        });
-        
-        // Update active nav link based on scroll position
-        function updateActiveNavLink() {
-            const sections = ['content-interests', 'content-internships', 'content-publications'];
-            const scrollPosition = window.scrollY + 100;
-            
-            let activeSection = 'home';
-            
-            sections.forEach(sectionId => {
-                const element = document.getElementById(sectionId);
-                if (element && element.offsetTop <= scrollPosition) {
-                    activeSection = sectionId.replace('content-', '');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('data-section') === activeSection) {
-                    link.classList.add('active');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', updateActiveNavLink);
-    </script>
+      const toggle = document.getElementById('language-toggle');
+      toggle.textContent = lang === 'en' ? '中文' : 'English';
+      toggle.setAttribute('aria-label', lang === 'en' ? 'Switch language to Chinese' : '切换到英文');
+    }
 
-    </div> <!-- Close main-content -->
+    document.addEventListener('DOMContentLoaded', () => {
+      const stored = localStorage.getItem('lang');
+      const initial = stored || document.documentElement.lang || 'en';
+      updateLanguage(initial);
+
+      document.getElementById('language-toggle').addEventListener('click', () => {
+        updateLanguage(document.documentElement.lang === 'en' ? 'zh' : 'en');
+      });
+    });
+  </script>
 </body>
-
 </html>

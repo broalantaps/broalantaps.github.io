@@ -1,132 +1,38 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!doctype html>
+<html lang="zh">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Blog Post - Yuhong Dai</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
-    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="../images/iu_green.jpg">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <style>
-        .post-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px 20px;
-        }
-        .post-header {
-            text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        .post-title {
-            font-family: 'Nunito', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
-        }
-        .post-meta {
-            font-family: 'Quicksand', sans-serif;
-            color: #666;
-            font-size: 1rem;
-        }
-        .post-category {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-top: 20px;
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .post-category:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        .post-content {
-            font-family: 'Quicksand', sans-serif;
-            line-height: 1.8;
-            color: #444;
-            font-size: 1.1rem;
-        }
-        .post-content h1, .post-content h2, .post-content h3 {
-            font-family: 'Nunito', sans-serif;
-            color: #333;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        .post-content h1 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid #9ee908;
-            padding-bottom: 10px;
-        }
-        .post-content h2 {
-            font-size: 1.5rem;
-            color: #555;
-        }
-        .post-content p {
-            margin-bottom: 20px;
-        }
-        .post-content blockquote {
-            border-left: 4px solid #9ee908;
-            padding-left: 20px;
-            margin: 20px 0;
-            font-style: italic;
-            color: #666;
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: #9ee908;
-            text-decoration: none;
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 500;
-        }
-        .back-link:hover {
-            color: #7bc906;
-            text-decoration: none;
-        }
-        .loading {
-            text-align: center;
-            padding: 50px;
-            color: #666;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Post - Yuhong Dai</title>
+  <link rel="stylesheet" href="../stylesheet.css">
+  <link rel="icon" type="image/png" href="../images/iu_green.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body class="bg_colour">
-    <div class="post-container">
-        <a href="index.html" class="back-link">← 返回博客</a>
-        
-        <div id="loading" class="loading">
-            <p>加载中...</p>
-        </div>
+  <main class="container">
+    <a href="index.html" class="back-link">← 返回博客</a>
 
-        <article id="post-article" style="display: none;">
-            <div class="post-header">
-                <h1 id="post-title" class="post-title"></h1>
-                <div id="post-meta" class="post-meta"></div>
-                <div id="post-category" class="post-category"></div>
-            </div>
-            <div id="post-content" class="post-content"></div>
-        </article>
-    </div>
+    <div id="loading" class="loading">加载中...</div>
 
-    <script>
-        // Article content for GitHub Pages compatibility
-                                        const articles = {
-            "2024-01-15-thoughts-on-ai-education.md": {
-                title: "AI与教育的思考",
-                date: "2024-01-15",
-                category: "技术思考",
-                content: `# AI与教育的思考
+    <article id="post-article" style="display: none;">
+      <header class="section" style="padding-top: 0;">
+        <h1 id="post-title" class="page-title"></h1>
+        <p id="post-meta" class="post-meta"></p>
+        <div id="post-category" class="post-category"></div>
+      </header>
+
+      <div id="post-content" class="post-content"></div>
+    </article>
+  </main>
+
+  <script>
+    // Article content for GitHub Pages compatibility
+    const articles = {
+      "2024-01-15-thoughts-on-ai-education.md": {
+        title: "AI与教育的思考",
+        date: "2024-01-15",
+        category: "技术思考",
+        content: `# AI与教育的思考
 
 在这个AI快速发展的时代，我经常思考技术如何能够真正改变教育的本质。
 
@@ -145,12 +51,12 @@
 ---
 
 *写于深圳大学图书馆*`
-            },
-            "2024-02-20-life-reflections.md": {
-                title: "生活随想",
-                date: "2024-02-20",
-                category: "生活感悟",
-                content: `# 生活随想
+      },
+      "2024-02-20-life-reflections.md": {
+        title: "生活随想",
+        date: "2024-02-20",
+        category: "生活感悟",
+        content: `# 生活随想
 
 最近在思考什么是真正有意义的生活。
 
@@ -169,12 +75,12 @@
 ---
 
 *夜深人静时的思考*`
-            },
-            "2025-08-03-2025RM-Thoughts.md": {
-                title: "2025 RoboMaster 有感",
-                date: "2025-08-03",
-                category: "技术思考",
-                content: `# 写在前面
+      },
+      "2025-08-03-2025RM-Thoughts.md": {
+        title: "2025 RoboMaster 有感",
+        date: "2025-08-03",
+        category: "技术思考",
+        content: `# 写在前面
 
 2025赛季落下帷幕，上交再度问鼎，豪取四冠，风采依旧。本届八强分别为：中科大、浙大、中石油华东、上交、华工、东大、大连理工和同济。
 
@@ -218,114 +124,103 @@ RM很卷，也很累。但正因如此，它塑造的，不止是技能，而是
 
 ——  
 *23、24赛季视觉组老兵留*`
-            },
-            "2025-07-24-AgentFi-Thoughts.md": {
-                title: "Thought of Mia: An AgentFi in Crypto",
-                date: "2025-07-24",
-                category: "Crypto",
-                content: `*夜深人静时的思考*`
-            },
-        };
+      },
+      "2025-07-24-AgentFi-Thoughts.md": {
+        title: "Thought of Mia: An AgentFi in Crypto",
+        date: "2025-07-24",
+        category: "Crypto",
+        content: `*夜深人静时的思考*`
+      }
+    };
 
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('zh-CN', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-        }
+    function formatDate(dateString) {
+      return dateString;
+    }
 
-        function loadPost() {
-            const filename = getUrlParameter('file');
-            const loading = document.getElementById('loading');
-            const article = document.getElementById('post-article');
+    function loadPost() {
+      const filename = getUrlParameter('file');
+      const loading = document.getElementById('loading');
 
-            if (!filename) {
-                loading.innerHTML = '<p>文章未找到</p>';
-                return;
+      if (!filename) {
+        loading.textContent = '文章未找到';
+        return;
+      }
+
+      // Try to load from static data first (for GitHub Pages)
+      const postData = articles[filename];
+      if (postData) {
+        displayPost(postData);
+        return;
+      }
+
+      // Fallback to dynamic loading (for local development)
+      fetch(`posts/${filename}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('文章未找到');
+          }
+          return response.text();
+        })
+        .then((markdown) => {
+          let title = '无标题';
+          let category = '未分类';
+          let date = new Date().toISOString().split('T')[0];
+          let content = markdown;
+
+          // 检查 YAML front matter
+          if (markdown.startsWith('---')) {
+            const endOfFrontMatter = markdown.indexOf('---', 3);
+            if (endOfFrontMatter !== -1) {
+              const frontMatter = markdown.substring(3, endOfFrontMatter).trim();
+              content = markdown.substring(endOfFrontMatter + 3).trim();
+
+              // 解析 YAML front matter
+              const lines = frontMatter.split('\n');
+              lines.forEach((line) => {
+                const colonIndex = line.indexOf(':');
+                if (colonIndex > 0) {
+                  const key = line.substring(0, colonIndex).trim();
+                  const value = line.substring(colonIndex + 1).trim().replace(/"/g, '');
+
+                  if (key === 'title') title = value;
+                  else if (key === 'category') category = value;
+                  else if (key === 'date') date = value;
+                }
+              });
             }
+          }
 
-            // Try to load from static data first (for GitHub Pages)
-            const postData = articles[filename];
-            
-            if (postData) {
-                // Load from static data
-                displayPost(postData);
-                return;
-            }
+          displayPost({ title, category, date, content });
+        })
+        .catch((error) => {
+          console.error('加载文章时出错:', error);
+          loading.textContent = '文章未找到，请检查文件名是否正确。';
+        });
+    }
 
-            // Fallback to dynamic loading (for local development)
-            fetch(`posts/${filename}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('文章未找到');
-                    }
-                    return response.text();
-                })
-                .then(markdown => {
-                    let title = '无标题';
-                    let category = '未分类';
-                    let date = new Date().toISOString().split('T')[0];
-                    let content = markdown;
+    function displayPost(postData) {
+      // 更新文章元数据
+      document.getElementById('post-category').textContent = postData.category;
+      document.getElementById('post-title').textContent = postData.title;
+      document.getElementById('post-meta').textContent = formatDate(postData.date);
 
-                    // 检查 YAML front matter
-                    if (markdown.startsWith('---')) {
-                        const endOfFrontMatter = markdown.indexOf('---', 3);
-                        if (endOfFrontMatter !== -1) {
-                            const frontMatter = markdown.substring(3, endOfFrontMatter).trim();
-                            content = markdown.substring(endOfFrontMatter + 3).trim();
+      // 将 Markdown 转换为 HTML
+      document.getElementById('post-content').innerHTML = marked.parse(postData.content);
 
-                            // 解析 YAML front matter
-                            const lines = frontMatter.split('\n');
-                            lines.forEach(line => {
-                                const colonIndex = line.indexOf(':');
-                                if (colonIndex > 0) {
-                                    const key = line.substring(0, colonIndex).trim();
-                                    const value = line.substring(colonIndex + 1).trim().replace(/"/g, '');
+      // 更新页面标题
+      document.title = `${postData.title} - Yuhong Dai`;
 
-                                    if (key === 'title') title = value;
-                                    else if (key === 'category') category = value;
-                                    else if (key === 'date') date = value;
-                                }
-                            });
-                        }
-                    }
+      // 显示文章并隐藏加载状态
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('post-article').style.display = 'block';
+    }
 
-                    displayPost({ title, category, date, content });
-                })
-                .catch(error => {
-                    console.error('加载文章时出错:', error);
-                    loading.innerHTML = '<p>文章未找到，请检查文件名是否正确。</p>';
-                });
-        }
-
-        function displayPost(postData) {
-            const loading = document.getElementById('loading');
-            const article = document.getElementById('post-article');
-
-            // 更新文章元数据
-            document.getElementById('post-category').textContent = postData.category;
-            document.getElementById('post-title').textContent = postData.title;
-            document.getElementById('post-meta').textContent = formatDate(postData.date);
-
-            // 将 Markdown 转换为 HTML
-            document.getElementById('post-content').innerHTML = marked.parse(postData.content);
-
-            // 更新页面标题
-            document.title = `${postData.title} - Yuhong Dai`;
-
-            // 显示文章并隐藏加载状态
-            loading.style.display = 'none';
-            article.style.display = 'block';
-        }
-
-        document.addEventListener('DOMContentLoaded', loadPost);
-    </script>
+    document.addEventListener('DOMContentLoaded', loadPost);
+  </script>
 </body>
 </html>
