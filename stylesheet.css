@@ -183,14 +183,17 @@ ul.plain-list li {
 .exp-list li {
   list-style: none;
   margin-left: -22px;
-  padding-left: 0;
+  padding-left: 34px;
+  position: relative;
 }
 .exp-logo {
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 24px;
   height: 15px;
-  width: auto;
-  vertical-align: -2px;
-  margin-right: 5px;
   object-fit: contain;
+  object-position: left center;
 }
 .exp-logo-wide {
   height: 12px;
