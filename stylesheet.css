@@ -179,26 +179,6 @@ ul.plain-list li {
   margin-top: 0.6em;
 }
 
-/* Inline company logos in Experience */
-.exp-list li {
-  list-style: none;
-  margin-left: -22px;
-  padding-left: 34px;
-  position: relative;
-}
-.exp-logo {
-  position: absolute;
-  left: 0;
-  top: 0.15em;
-  width: 24px;
-  height: 15px;
-  object-fit: contain;
-  object-position: left center;
-}
-.exp-logo-wide {
-  height: 12px;
-}
-
 /* Publications — topic groups + entries */
 .pub-group-title {
   font-weight: bold;
