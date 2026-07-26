@@ -81,6 +81,12 @@ a:focus {
   margin: 0.3em 0 0.7em;
 }
 
+.site-title-cn {
+  font-size: 80%;
+  font-weight: bold;
+  margin-left: 0.25em;
+}
+
 /* Blue bold subheads in the header (role / degree), mirroring the reference */
 .site-head-key {
   color: rgb(82, 123, 189);
