@@ -1,32 +1,34 @@
 :root {
-  --bg: #fbfaf6;
-  --bg-accent: #f4efe4;
+  /* Formal, institutional academic palette — crisp paper white with a deep
+     navy accent, in the spirit of Hong Kong university faculty homepages. */
+  --bg: #ffffff;
+  --bg-accent: #f3f5f8;
   --surface: #ffffff;
   --surface-raised: #ffffff;
-  --text: #1a1f24;
-  --text-strong: #0f1317;
-  --muted: #4a5560;
-  --muted-2: #7a848d;
-  --border: #e8e2d5;
-  --border-subtle: #f0ebdf;
-  --accent: #0d4a5c;
-  --accent-hover: #083542;
-  --accent-soft: #e4eef1;
-  --warm: #b45309;
-  --warm-soft: #fef3e2;
-  --success: #0f766e;
-  --success-soft: #e0f3f1;
-  --rose: #9f1239;
-  --rose-soft: #fde8ef;
-  --violet: #6d28d9;
-  --violet-soft: #eee6fb;
-  --shadow-sm: 0 1px 2px rgba(15, 23, 28, 0.04);
-  --shadow: 0 1px 3px rgba(15, 23, 28, 0.06), 0 4px 12px rgba(15, 23, 28, 0.04);
-  --shadow-lg: 0 2px 4px rgba(15, 23, 28, 0.06), 0 8px 24px rgba(15, 23, 28, 0.08);
-  --maxw: 920px;
-  --radius: 14px;
-  --radius-sm: 8px;
-  --radius-pill: 999px;
+  --text: #1f2733;
+  --text-strong: #10192a;
+  --muted: #475261;
+  --muted-2: #6b7684;
+  --border: #e2e6ec;
+  --border-subtle: #eef1f5;
+  --accent: #1f3a68;
+  --accent-hover: #142848;
+  --accent-soft: #eaeff7;
+  --warm: #8a5a1a;
+  --warm-soft: #f6efe4;
+  --success: #1f5a4d;
+  --success-soft: #e7f0ec;
+  --rose: #7a2436;
+  --rose-soft: #f4e8ea;
+  --violet: #3a3f7a;
+  --violet-soft: #eaebf3;
+  --shadow-sm: 0 1px 2px rgba(16, 25, 42, 0.04);
+  --shadow: 0 1px 2px rgba(16, 25, 42, 0.05), 0 3px 10px rgba(16, 25, 42, 0.04);
+  --shadow-lg: 0 2px 4px rgba(16, 25, 42, 0.06), 0 8px 22px rgba(16, 25, 42, 0.07);
+  --maxw: 900px;
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-pill: 4px;
   --font-serif: "Crimson Pro", "Source Serif Pro", ui-serif, Georgia, "Times New Roman", Times, "Noto Serif SC", "Songti SC", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -55,10 +57,6 @@ html {
 body {
   margin: 0;
   background: var(--bg);
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(13, 74, 92, 0.06), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(180, 83, 9, 0.04), transparent 55%);
-  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-serif);
   font-size: 17px;
@@ -261,7 +259,7 @@ section {
   margin-top: 34px;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  background: rgba(251, 250, 246, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: saturate(1.4) blur(10px);
   -webkit-backdrop-filter: saturate(1.4) blur(10px);
   position: sticky;
@@ -306,24 +304,31 @@ section {
 }
 
 .section-title {
-  margin: 0 0 20px;
+  margin: 0 0 22px;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text-strong);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
 }
 
 .section-title::before {
   content: "";
-  width: 28px;
-  height: 2px;
+  width: 3px;
+  height: 15px;
   background: var(--accent);
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 .section-note {
@@ -380,7 +385,7 @@ section {
 .pub-item:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
-  border-color: #d8cfb8;
+  border-color: #c9d2df;
 }
 
 .pub-thumb {
@@ -425,19 +430,19 @@ section {
 .badge-venue.venue-conf {
   background: var(--accent-soft);
   color: var(--accent);
-  border-color: rgba(13, 74, 92, 0.15);
+  border-color: rgba(31, 58, 104, 0.15);
 }
 
 .badge-venue.venue-icml {
   background: var(--success-soft);
   color: var(--success);
-  border-color: rgba(15, 118, 110, 0.15);
+  border-color: rgba(31, 90, 77, 0.15);
 }
 
 .badge-venue.venue-acl {
   background: var(--violet-soft);
   color: var(--violet);
-  border-color: rgba(109, 40, 217, 0.15);
+  border-color: rgba(58, 63, 122, 0.15);
 }
 
 .badge-venue.venue-arxiv {
@@ -449,7 +454,7 @@ section {
 .badge-venue.role-first {
   background: var(--warm-soft);
   color: var(--warm);
-  border-color: rgba(180, 83, 9, 0.15);
+  border-color: rgba(138, 90, 26, 0.15);
 }
 
 .pub-title {
@@ -518,7 +523,7 @@ section {
 .pub-links a:focus {
   background: var(--accent-soft);
   color: var(--accent);
-  border-color: rgba(13, 74, 92, 0.2);
+  border-color: rgba(31, 58, 104, 0.2);
   text-decoration: none;
 }
 
@@ -541,7 +546,7 @@ section {
 .item:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
-  border-color: #d8cfb8;
+  border-color: #c9d2df;
 }
 
 .item-head {
@@ -606,7 +611,7 @@ section {
   font-weight: 600;
   letter-spacing: 0.04em;
   padding: 3px 10px;
-  border: 1px solid rgba(180, 83, 9, 0.2);
+  border: 1px solid rgba(138, 90, 26, 0.2);
   border-radius: var(--radius-pill);
   background: var(--warm-soft);
   color: var(--warm);
@@ -686,7 +691,7 @@ section {
 .post-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
-  border-color: #d8cfb8;
+  border-color: #c9d2df;
 }
 
 .post-card-title {
@@ -732,7 +737,7 @@ section {
   padding: 3px 10px;
   border-radius: var(--radius-pill);
   background: var(--accent-soft);
-  border: 1px solid rgba(13, 74, 92, 0.15);
+  border: 1px solid rgba(31, 58, 104, 0.15);
 }
 
 .post-content {
