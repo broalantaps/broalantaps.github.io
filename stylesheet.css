@@ -65,6 +65,7 @@ a:focus {
 
 .header-avatar {
   flex: 0 0 auto;
+  margin-right: 40px;
 }
 
 .avatar {
