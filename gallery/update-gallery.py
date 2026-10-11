@@ -8,6 +8,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import quote
 
 try:
     from PIL import Image, ImageOps
@@ -89,8 +90,9 @@ def collect():
             print(f'✓ 生成缩略图: {thumb.relative_to(ROOT)}')
 
         photos.append({
-            'thumb': f'../images/gallery/thumbs/{thumb.name}',
-            'full': f'../images/gallery/{path.name}',
+            # 文件名里的空格、中文等要转义成 URL 形式
+            'thumb': quote(f'../images/gallery/thumbs/{thumb.name}'),
+            'full': quote(f'../images/gallery/{path.name}'),
             'caption': caption,
             'date': parse_date(caption),
         })
@@ -157,7 +159,12 @@ def main():
         print(f'❌ {SRC.relative_to(ROOT)} 里没有找到照片')
         return 1
 
-    prune_thumbs({Path(p['full']).stem for p in photos})
+    # 用磁盘上的真实文件名，不能用上面转义过的 URL
+    keep_stems = {
+        p.stem for p in SRC.iterdir()
+        if p.is_file() and p.suffix.lower() in PHOTO_EXTS
+    }
+    prune_thumbs(keep_stems)
 
     if not update_page(photos):
         return 1
