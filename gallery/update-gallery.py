@@ -8,7 +8,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 try:
     from PIL import Image, ImageOps
@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'images' / 'gallery'
 THUMBS = SRC / 'thumbs'
 PAGE = ROOT / 'gallery' / 'index.html'
+ORDER_FILE = SRC / 'order.txt'
 
 PHOTO_EXTS = {'.jpg', '.jpeg', '.png', '.webp'}
 THUMB_LONG_EDGE = 700
@@ -97,10 +98,47 @@ def collect():
             'date': parse_date(caption),
         })
 
-    # 有日期的在前、按时间倒序；没有日期的排在最后，按文件名
-    dated = sorted((p for p in photos if p['date']), key=lambda p: p['date'], reverse=True)
-    undated = sorted((p for p in photos if not p['date']), key=lambda p: p['full'])
-    return dated + undated
+    return photos
+
+
+def read_order():
+    """order.txt 里一行一个文件名，按从上到下的顺序排；# 开头的行是注释。"""
+    if not ORDER_FILE.exists():
+        return []
+    return [
+        line.strip()
+        for line in ORDER_FILE.read_text(encoding='utf-8').splitlines()
+        if line.strip() and not line.strip().startswith('#')
+    ]
+
+
+def source_name(photo):
+    """从转义过的 URL 反推出磁盘上的真实文件名。"""
+    return unquote(photo['full']).rsplit('/', 1)[-1]
+
+
+def sort_photos(photos, order):
+    """order.txt 里列出的按列表顺序排在前面，其余按日期倒序接在后面。"""
+    def by_date(items):
+        dated = sorted((p for p in items if p['date']), key=lambda p: p['date'], reverse=True)
+        undated = sorted((p for p in items if not p['date']), key=lambda p: p['full'])
+        return dated + undated
+
+    if not order:
+        return by_date(photos)
+
+    rank = {name: i for i, name in enumerate(order)}
+    present = {source_name(p) for p in photos}
+    for name in order:
+        if name not in present:
+            print(f'⚠ order.txt 里的 {name} 没有对应照片，已忽略')
+
+    listed = sorted(
+        (p for p in photos if source_name(p) in rank),
+        key=lambda p: rank[source_name(p)],
+    )
+    unlisted = [p for p in photos if source_name(p) not in rank]
+    return listed + by_date(unlisted)
 
 
 def prune_thumbs(keep_stems):
@@ -158,6 +196,8 @@ def main():
     if not photos:
         print(f'❌ {SRC.relative_to(ROOT)} 里没有找到照片')
         return 1
+
+    photos = sort_photos(photos, read_order())
 
     # 用磁盘上的真实文件名，不能用上面转义过的 URL
     keep_stems = {
