@@ -399,3 +399,46 @@ ul.plain-list li {
     max-width: 260px;
   }
 }
+
+/* Gallery — masonry via CSS columns, photos keep their native aspect ratio */
+.gallery {
+  columns: 3;
+  column-gap: 18px;
+  margin-top: 1.2em;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin: 0 0 18px;
+}
+
+.gallery-item a {
+  display: block;
+}
+
+/* The global a:hover rule draws a dotted underline — suppress it under photos */
+.gallery-item a:hover,
+.gallery-item a:focus {
+  border-bottom: none;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  background: #f6f6f6;
+}
+
+.gallery-caption {
+  color: #777;
+  font-size: 90%;
+  line-height: 1.35;
+  margin-top: 4px;
+}
+
+@media (max-width: 900px) {
+  .gallery {
+    columns: 2;
+  }
+}
